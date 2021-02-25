@@ -1,0 +1,37 @@
+apiVersion: v1
+data:
+  config.yaml: |
+    prometheusK8s:
+      retention: 15d
+      volumeClaimTemplate:
+        spec:
+          storageClassName: nfs-storage
+          resources:
+            requests:
+              storage: 40Gi
+    alertmanagerMain:
+      volumeClaimTemplate:
+        spec:
+          storageClassName: nfs-storage
+          resources:
+            requests:
+              storage: 20Gi
+kind: ConfigMap
+metadata:
+  creationTimestamp: "2021-02-25T08:49:48Z"
+  managedFields:
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:data:
+        .: {}
+        f:config.yaml: {}
+    manager: oc
+    operation: Update
+    time: "2021-02-25T08:49:48Z"
+  name: cluster-monitoring-config
+  namespace: openshift-monitoring
+  resourceVersion: "1499222"
+  selfLink: /api/v1/namespaces/openshift-monitoring/configmaps/cluster-monitoring-config
+  uid: 012665ab-b53c-4150-a85e-e71c6cf79050
+
